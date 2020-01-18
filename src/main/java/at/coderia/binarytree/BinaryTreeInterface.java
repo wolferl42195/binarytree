@@ -1,4 +1,4 @@
-package binarytree;
+package at.coderia.binarytree;
 
 /**
  * The Interface for the BinaryTree to define the method needed.

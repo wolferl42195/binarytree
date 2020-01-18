@@ -1,4 +1,4 @@
-package binarytree;
+package at.coderia.binarytree;
 
 public class Person implements Comparable<Person> {
 	

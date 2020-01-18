@@ -1,10 +1,10 @@
-package binarytree;
+package at.coderia.binarytree;
 
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-import static org.junit.Assert.*;
+import static org.junit.jupiter.api.Assertions.*;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -20,7 +20,7 @@ public class BinaryTreeTest {
 
 	
 	@BeforeEach
-	public void setUp() {
+	public void init() {
 		tree = new BinaryTree<>();
 		persons = new ArrayList<>();
 		for(String name : testdata){
@@ -28,7 +28,7 @@ public class BinaryTreeTest {
 			persons.add(c);
 		}
 	}
-	
+
 	@Test
 	public void testInsertElement() {
 		assertFalse(tree.insertElement(null));

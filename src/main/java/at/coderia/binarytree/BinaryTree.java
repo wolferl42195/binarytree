@@ -1,4 +1,4 @@
-package binarytree;
+package at.coderia.binarytree;
 
 import java.io.IOException;
 import java.io.StringWriter;
