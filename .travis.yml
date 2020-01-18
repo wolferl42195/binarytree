@@ -4,3 +4,11 @@ language: java
 #we add the java development kit (jdk)
 jdk:
   - openjdk11
+
+services:
+   - docker
+
+before_install:
+  - echo "$DOCKER_PASSWORD" | docker login  -u "$DOCKER_USERNAME" --password-stdin
+  - docker pull openjdk:11-jdk
+
