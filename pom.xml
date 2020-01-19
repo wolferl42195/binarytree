@@ -73,8 +73,9 @@
                 </executions>
                 <configuration>
                     <repository>${docker.image.prefix}/${project.artifactId}</repository>
-                    <serverId>index.docker.io</serverId>
-                    <registryUrl>https://index.docker.io:443/v1/</registryUrl>
+                    <buildArgs>
+                        <JAR_FILE>target/${project.build.finalName}.jar</JAR_FILE>
+                    </buildArgs>
                 </configuration>
             </plugin>
             <!-- maven-dependency-plugin useful for creating docker image -->
