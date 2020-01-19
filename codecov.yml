@@ -1,2 +1,25 @@
 codecov:
-  token: 5be20152-483b-4395-b674-2feb2d819934
+  require_ci_to_pass: false
+
+coverage:
+  precision: 2
+  round: down
+  range: "70...100"
+
+  status:
+    project: true
+    patch: yes
+    changes: no
+
+parsers:
+  gcov:
+    branch_detection:
+      conditional: yes
+      loop: yes
+      method: no
+      macro: no
+
+comment:
+  layout: "sunburst"
+  behavior: default
+  require_changes: false
