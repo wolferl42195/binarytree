@@ -12,6 +12,13 @@ before_install:
   - echo "$DOCKER_PASSWORD" | docker login  -u "$DOCKER_USERNAME" --password-stdin
   - docker pull openjdk:11-jdk
 
+addons:
+    sonarcloud:
+    organization: "wolferl42195"
+    token:
+    secure: "a71xEXpPYoTjLYOUDLn8/wip/X2c3dVdE71YXcBnpjMXB+O2+gEtkkjw22u04T4J50ZdXf5KVxx8GCRIL6nWDaz+uLhz3O8oJtG6eDZ1jsvc0w6rkuJcSxHJk3Hx3J6fr9/Aaw6NFMjEdsuLOAfg4Ohvv1bLh0nzouRjOkZOTJduCmg9nSPvBN5eNi4WABX3PpFG33LlHVCJK1UhflUMJzotnR3e8nX/STRUOrUmwf3I+8BfGrV1JNU4fkFIXQsWW4ibaY/6RMrO3ed3s0BVa4gSxs8nRxXsh4TYV9jRfrjZoAml++xeW0PpIPh2R7B3jYuag7VS3xtcuUyH56CarChQANKFR8/XJMF7cmAOGBq/Jym8u8ju/V3Lwfm3NTCegaa49TAQLAQnoKC+w6BIMR9bjjtN7AC+wIbtkIXQfUD/md+mG2dQFAnp4k9sv51VMmi0TBlH44Ui9wEMPFp1U86ZGWXH1TzZTDInH6fzyaJuS5OxPiV4jUhzXsgKItUZcK1g2cjSKn+YvOTVTWl3QY17ktAflLIu0OVAdKCs+RMtRxwyhXHTovxNWxW286PbVhrJdJJ+xCUm9hK7XTDXT2Epjo8QGSAoeen2n5d/M4+UmSgTzIb+Nz2Q3757DYlVWQTCYak+jJts2BZikEGR/m7B708Eeobia5h7jK4cG5c="
+
+
 script:
   - echo -e '<?xml version="1.0" encoding="UTF-8"?>\n<settings xsi:schemaLocation="http://maven.apache.org/SETTINGS/1.1.0 http://maven.apache.org/xsd/settings-1.1.0.xsd" xmlns="http://maven.apache.org/SETTINGS/1.1.0"\n    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">\n  <mirrors>\n    <mirror>\n      <id>mvnsearch-unavailable</id>\n      <name>mvnsearch-unavailable</name>\n      <mirrorOf>mvnsearch</mirrorOf>\n      <url>http://repo1.maven.org/maven2</url>\n    </mirror>\n  </mirrors>\n  <profiles>\n    <profile>\n      <id>no-mvnsearch</id>\n      <repositories>\n        <repository>\n          <id>mvnsearch</id>\n          <url>http://www.mvnsearch.org/maven2</url>\n          <releases>\n            <enabled>true</enabled>\n          </releases>\n          <snapshots>\n            <enabled>true</enabled>\n          </snapshots>\n        </repository>\n      </repositories>\n    </profile>\n  </profiles>\n  <activeProfiles>\n    <activeProfile>no-mvnsearch</activeProfile>\n  </activeProfiles>\n</settings>' > $HOME/.m2/settings.xml
   - cat $HOME/.m2/settings.xml
@@ -19,3 +26,5 @@ script:
 
 after_success:
   - bash <(curl -s https://codecov.io/bash)
+    # the following command line builds the project, runs the tests with coverage and then execute the SonarCloud analysis
+  - mvn clean org.jacoco:jacoco-maven-plugin:prepare-agent install sonar:sonar -Dsonar.projectKey=wolferl42195_BinaryTree
