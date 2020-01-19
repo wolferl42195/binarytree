@@ -4,6 +4,7 @@
     <modelVersion>4.0.0</modelVersion>
     <groupId>at.coderia</groupId>
     <artifactId>binarytree</artifactId>
+    <packaging>jar</packaging>
     <version>0.0.1-SNAPSHOT</version>
     <properties>
         <maven.compiler.source>1.13</maven.compiler.source>
@@ -42,6 +43,18 @@
                         <version>${junit.platform.version}</version>
                     </dependency>
                 </dependencies>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-jar-plugin</artifactId>
+                <version>3.2.0</version>
+                <configuration>
+                    <archive>
+                        <manifest>
+                            <mainClass>at.coderia.binarytree.BinaryTreeMain</mainClass>
+                        </manifest>
+                    </archive>
+                </configuration>
             </plugin>
             <!-- spotify's dockerfile-maven-plugin -->
             <plugin>
