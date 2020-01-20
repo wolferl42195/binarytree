@@ -56,7 +56,29 @@
                     </archive>
                 </configuration>
             </plugin>
-
+            <!-- spotify's dockerfile-maven-plugin -->
+            <plugin>
+                <groupId>com.spotify</groupId>
+                <artifactId>dockerfile-maven-plugin</artifactId>
+                <version>1.4.9</version>
+                <executions>
+                    <execution>
+                        <id>default</id>
+                        <phase>install</phase>
+                        <goals>
+                            <goal>build</goal>
+                            <goal>push</goal>
+                        </goals>
+                    </execution>
+                </executions>
+                <configuration>
+                    <repository>${docker.image.prefix}/${project.artifactId}</repository>
+                    <buildArgs>
+                        <JAR_FILE>target/${project.build.finalName}.jar</JAR_FILE>
+                    </buildArgs>
+                </configuration>
+            </plugin>
+            <!-- maven-dependency-plugin useful for creating docker image -->
             <!-- jacoco-maven-plugin useful for Codecov -->
             <plugin>
                 <groupId>org.jacoco</groupId>
