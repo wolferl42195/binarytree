@@ -10,7 +10,7 @@ addons:
   sonarcloud:
     organization: "wolferl42195"
     token:
-      secure: "8851c75bbe532c9f80860392c4faf5cf3f0e320e"
+      secure: $SONAR_TOKENs
 after_success:
   - bash <(curl -s https://codecov.io/bash)
   # the following command line builds the project, runs the tests with coverage and then execute the SonarCloud analysis
