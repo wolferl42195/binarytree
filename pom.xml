@@ -52,36 +52,6 @@
                 </executions>
             </plugin>
             <plugin>
-                <groupId>com.spotify</groupId>
-                <artifactId>dockerfile-maven-plugin</artifactId>
-                <version>1.4.9</version>
-                <executions>
-                    <execution>
-                        <id>default</id>
-                        <goals>
-                            <goal>build</goal>
-                            <goal>push</goal>
-                        </goals>
-                    </execution>
-                    <execution>
-                        <id>tag-latest</id>
-                        <goals>
-                            <goal>build</goal>
-                            <goal>push</goal>
-                        </goals>
-                        <configuration>
-                            <tag>latest</tag>
-                        </configuration>
-                    </execution>
-                </executions>
-                <configuration>
-                    <username>${project.groupId}</username>
-                    <password>${env.DOCKER_HUB_TOKEN}</password>
-                    <repository>registry.hub.docker.com/${project.groupId}/${project.artifactId}</repository>
-                    <tag>${project.version}</tag>
-                </configuration>
-            </plugin>
-            <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-deploy-plugin</artifactId>
                 <version>2.8.2</version>
@@ -173,14 +143,14 @@
     </licenses>
     <developers>
         <developer>
-            <email>Wolfgang.radinger@gmail.com</email>
+            <email>code@radinger-peer.at</email>
             <name>Wolfgang Radinger-Peer</name>
             <url>https://github.com/wolferl42195</url>
             <id>wolferl42195</id>
         </developer>
     </developers>
     <organization>
-        <name>Coderia</name>
-        <url> https://www.coderia.at/</url>
+        <name>Wolfgang Radinger-Peer</name>
+        <url> https://www.radinger-peer.at/</url>
     </organization>
 </project>
