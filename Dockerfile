@@ -1,5 +1,5 @@
 FROM openjdk:11-jdk
-LABEL maintainer="wolfgang.radinger@gmail.com"
+LABEL maintainer="code@radinger-peer.at"
 VOLUME /tmp
 ARG JAR_FILE
 ADD ${JAR_FILE} app.jar

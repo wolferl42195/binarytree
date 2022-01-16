@@ -173,14 +173,14 @@
     </licenses>
     <developers>
         <developer>
-            <email>Wolfgang.radinger@gmail.com</email>
+            <email>code@radinger-peer.at</email>
             <name>Wolfgang Radinger-Peer</name>
             <url>https://github.com/wolferl42195</url>
             <id>wolferl42195</id>
         </developer>
     </developers>
     <organization>
-        <name>Coderia</name>
-        <url> https://www.coderia.at/</url>
+        <name>Wolfgang Radinger-Peer</name>
+        <url> https://www.radinger-peer.at/</url>
     </organization>
 </project>
