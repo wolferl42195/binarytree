@@ -10,11 +10,13 @@ addons:
   sonarcloud:
     organization: "wolferl42195"
     token:
-      secure: $SONAR_TOKEN
+      secure: "Yiy3rrtJg2Nswnm/SJtoDmufTireruVtPgp4oB1utmz4ABvJAfgcNSnHPEv7epYnl16aOaQhdQdy5Powq5RCyptT1K/C7CUYB4NmYTvF8lqE6Aupe7Bo/AwRKulnc1cYZuu2/7HamknFtscwRqCbH9ypVK8cQzjFwgHbH27IV6aXaghVyV4OWt5LBzZsEtzbVWg6oYVxahM2LzeyvRkSksODu+nnYsoe7S8UAKhsx0r0sWTmv0T2GY6lqYew5qqsFxqE7L2nnKguWzLcQ48Ffi1BR3op2bI2LoLTfBk9OGYOawD8PSCtQyLXe1uCY71fVal1qo2qyaOfmCW2mabJwTDBZJQcBKXO9kSEnIdkYHBjvtLhQaToNWSbaGh7WjTh5rcjHfqYYQxUIyAhwl1sg5sPCSGEeRp5RdzGYRrAWz29jY7rK0DHaCnTtUkdkTcLe1EAuNtp1BSA753jraiBu492TusPpH3C8CeE3aQqzkSjJT7UQbU23j0s7GdVFXba2TqDnA7BDKSN1yTU3Pz/vA9Wt0wEjQKtJGdu0BeYvtq+UUetBv1iFhJWMEIzX1EqWwbSwIM5Dd0NjG1HQQBidta4XIAZIqJj0k16Zwebz/wIKJf5KohFluAxZHIRc+2hBRicihR30VG2DYXQ/yZzMGpBFNQ6+d+eMsgOTn91edc="
+
 after_success:
   - bash <(curl -s https://codecov.io/bash)
   # the following command line builds the project, runs the tests with coverage and then execute the SonarCloud analysis
   - mvn clean org.jacoco:jacoco-maven-plugin:prepare-agent install sonar:sonar -Dsonar.projectKey=wolferl42195_binarytree
+
 script:
   - echo -e '<?xml version="1.0" encoding="UTF-8"?>\n<settings xsi:schemaLocation="http://maven.apache.org/SETTINGS/1.1.0 http://maven.apache.org/xsd/settings-1.1.0.xsd" xmlns="http://maven.apache.org/SETTINGS/1.1.0"\n    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">\n  <mirrors>\n    <mirror>\n      <id>mvnsearch-unavailable</id>\n      <name>mvnsearch-unavailable</name>\n      <mirrorOf>mvnsearch</mirrorOf>\n      <url>http://repo1.maven.org/maven2</url>\n    </mirror>\n  </mirrors>\n  <profiles>\n    <profile>\n      <id>no-mvnsearch</id>\n      <repositories>\n        <repository>\n          <id>mvnsearch</id>\n          <url>http://www.mvnsearch.org/maven2</url>\n          <releases>\n            <enabled>true</enabled>\n          </releases>\n          <snapshots>\n            <enabled>true</enabled>\n          </snapshots>\n        </repository>\n      </repositories>\n    </profile>\n  </profiles>\n  <activeProfiles>\n    <activeProfile>no-mvnsearch</activeProfile>\n  </activeProfiles>\n</settings>' > $HOME/.m2/settings.xml
   - cat $HOME/.m2/settings.xml
